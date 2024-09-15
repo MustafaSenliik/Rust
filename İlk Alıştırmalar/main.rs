@@ -1,4 +1,4 @@
-use rand::{thread_rng, seq::SliceRandom}; // Virgül eksikti
+use rand::{thread_rng, seq::SliceRandom}; 
 
 #[derive(Debug)]
 struct Deste {
