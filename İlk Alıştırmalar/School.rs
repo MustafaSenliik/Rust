@@ -1,47 +1,47 @@
 #[derive(Debug)]
-struct Ogrenci {
-    numara: u32,
-    veli: String,
+struct Student {
+    number: u32,
+    guardian: String,
 }
 
-impl Ogrenci {
-    fn new(numara: u32, veli: String) -> Self {
-        Ogrenci {
-            numara,
-            veli,
+impl Student {
+    fn new(number: u32, guardian: String) -> Self {
+        Student {
+            number,
+            guardian,
         }
     }
 }
 
 #[derive(Debug)]
-struct Okul {
-    ogrenciler: Vec<Ogrenci>,
+struct School {
+    students: Vec<Student>,
 }
 
-impl Okul {
+impl School {
     fn new() -> Self {
-        Okul {
-            ogrenciler: vec![],
+        School {
+            students: vec![],
         }
     }
 }
 
-fn print_ogrenci(ogrenci: Ogrenci) -> Ogrenci {  
-    println!("{:#?}", ogrenci);
-    ogrenci  // Geri döndürülüyor
+fn print_student(student: Student) -> Student {  
+    println!("{:#?}", student);
+    student  // Returned
 }
 
-fn print_okul(okul: Okul) {  
-    println!("{:#?}", okul);
+fn print_school(school: School) {  
+    println!("{:#?}", school);
 }
 
 fn main() {
-    let ogrenci = Ogrenci::new(1, String::from("ahmet"));
-    let okul = Okul::new();
+    let student = Student::new(1, String::from("Ahmet"));
+    let school = School::new();
  
-    print_okul(okul);  // Okul taşınır ve artık kullanılamaz
+    print_school(school);  // School is moved and can no longer be used
 
-    let ogrenci = print_ogrenci(ogrenci);
+    let student = print_student(student);
 
-    println!("{:#?}", ogrenci.veli);
+    println!("{:#?}", student.guardian);
 }
