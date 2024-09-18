@@ -1,36 +1,36 @@
 use rand::{thread_rng, seq::SliceRandom}; 
 
 #[derive(Debug)]
-struct Deste {
-    kartlar: Vec<String>,
+struct Deck {
+    cards: Vec<String>,
 }
 
-impl Deste {
+impl Deck {
     fn new() -> Self {
-        let mut kartlar = vec![];
-        let kart_turleri = ["Kupa", "Karo", "Sinek"];
-        let degerler = ["2", "3", "4"];
+        let mut cards = vec![];
+        let suits = ["Hearts", "Diamonds", "Clubs"];
+        let values = ["2", "3", "4"];
 
-        for kart_turleri in kart_turleri {
-            for degerler in degerler {
-                let kart = format!("{} {}", kart_turleri, degerler);
-                kartlar.push(kart);
+        for suit in suits {
+            for value in values {
+                let card = format!("{} {}", suit, value);
+                cards.push(card);
             }
         }
 
-        Deste { kartlar }
+        Deck { cards }
     }
 
-    // Shuffle fonksiyonu burada tanımlanmalı
+    // Shuffle function to randomize the deck
     fn shuffle(&mut self) {
         let mut rng = thread_rng();
-        self.kartlar.shuffle(&mut rng); // SliceRandom kullanarak shuffle yapıyoruz
+        self.cards.shuffle(&mut rng); // Using SliceRandom to shuffle
     }
 }
 
 fn main() {
-    let mut deste = Deste::new(); // Deste mutably oluşturulmalı ki shuffle edilebilsin
-    deste.shuffle(); // Shuffle işlemi
+    let mut deck = Deck::new(); // The deck must be mutable so it can be shuffled
+    deck.shuffle(); // Shuffle the deck
 
-    println!("Deste Burada: {:#?}", deste); // Deste yazdırılıyor
+    println!("Shuffled Deck: {:#?}", deck); // Print the shuffled deck
 }
