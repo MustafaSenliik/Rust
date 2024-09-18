@@ -1,23 +1,23 @@
-// Kullanıcı takipçi yapısı
+// User follower structure
 struct UserFollowers {
     username: String,
     followers: u32,
 }
 
 impl UserFollowers {
-    // Kullanıcının takipçi sayısını görüntüleme
+    // Display the number of followers
     fn show_followers(&self) {
         println!("Username: {}", self.username);
         println!("Followers: {}", self.followers);
     }
 
-    // Takipçi ekleme
+    // Add a follower
     fn add_follower(&mut self) {
         self.followers += 1;
         println!("You gained a new follower! Total followers: {}", self.followers);
     }
 
-    // Takipçi çıkarma
+    // Remove a follower
     fn remove_follower(&mut self) {
         if self.followers > 0 {
             self.followers -= 1;
@@ -29,18 +29,18 @@ impl UserFollowers {
 }
 
 fn main() {
-    // Kullanıcı oluşturma
+    // Create a user
     let mut user = UserFollowers {
         username: String::from("mustafasenlik"),
         followers: 100,
     };
 
-    // Takipçi sayısını gösterme
+    // Display the number of followers
     user.show_followers();
 
-    // Yeni bir takipçi ekleme
+    // Add a new follower
     user.add_follower();
 
-    // Bir takipçi kaybetme
+    // Lose a follower
     user.remove_follower();
 }
